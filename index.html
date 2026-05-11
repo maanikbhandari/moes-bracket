@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stanley Cup Playoffs Pool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Stanley Cup Playoffs Pool <span id="season-label">2025-26</span></h1>
+    <div id="header-controls">
+      <div id="player-select">
+        <label for="current-player">Playing as:</label>
+        <select id="current-player">
+          <option value="">Select your name</option>
+          <option value="brandon">Brandon</option>
+          <option value="brian">Brian</option>
+          <option value="bryan">Bryan</option>
+          <option value="ivan">Ivan</option>
+          <option value="nam">Nam</option>
+          <option value="maanik">Maanik</option>
+          <option value="vince">Vince</option>
+          <option value="tammy" class="tammy-option" style="display:none">Tammy</option>
+        </select>
+      </div>
+      <div id="year-select">
+        <label for="current-year">Season:</label>
+        <select id="current-year">
+          <option value="2026">2025-26</option>
+          <option value="2025">2024-25</option>
+          <option value="2024">2023-24</option>
+          <option value="2023">2022-23</option>
+          <option value="2022">2021-22</option>
+          <option value="2021">2020-21</option>
+          <option value="2020">2019-20</option>
+          <option value="2019">2018-19</option>
+          <option value="2018">2017-18</option>
+          <option value="2017">2016-17</option>
+          <option value="2016">2015-16</option>
+          <option value="2015">2014-15</option>
+        </select>
+      </div>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-view="leaderboard">Leaderboard</button>
+      <button class="nav-btn" data-view="picks">Make Picks</button>
+      <button class="nav-btn" data-view="grid">All Picks</button>
+      <button class="nav-btn" data-view="results">Live Results</button>
+      <button class="nav-btn lambs-lair-btn" data-view="lambslair" style="display:none">lambs lair</button>
+    </nav>
+  </header>
+
+  <div id="status-bar" style="display:none; padding:0.6rem 1.5rem; font-size:0.8rem; background:#1c2333; border-bottom:1px solid #30363d; color:#8b949e;"></div>
+  <div id="error-banner" style="display:none; padding:1rem 1.5rem; background:#1c2333; border-bottom:1px solid #30363d;"></div>
+
+  <main>
+    <section id="view-leaderboard" class="view active">
+      <h2>Leaderboard</h2>
+      <div id="leaderboard-container"></div>
+    </section>
+
+    <section id="view-picks" class="view">
+      <h2>Make Your Picks</h2>
+      <div id="no-player-msg" class="info-msg">Select your name above to make picks.</div>
+      <div id="picks-container"></div>
+    </section>
+
+    <section id="view-grid" class="view">
+      <h2>Everyone's Picks</h2>
+      <div id="grid-container"></div>
+    </section>
+
+    <section id="view-results" class="view">
+      <h2>Live Series Results</h2>
+      <div id="results-container"></div>
+    </section>
+
+    <section id="view-lambslair" class="view">
+      <div id="lambslair-container"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>$20 buy-in · Winner take all · Data from NHL.com</p>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="nhl-api.js"></script>
+  <script src="picks.js"></script>
+  <script src="leaderboard.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
