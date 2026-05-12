@@ -302,21 +302,23 @@ function renderResults(bracketData) {
     html += '<div class="results-grid">';
 
     for (const series of seriesList) {
-      if (!series.topTeam || !series.bottomTeam) continue;
+      if (!series.topTeam && !series.bottomTeam) continue;
 
-      const topWinClass = series.winner === series.topTeam ? " series-winner" : "";
-      const bottomWinClass = series.winner === series.bottomTeam ? " series-winner" : "";
+      const topName    = series.topTeam    || "TBD";
+      const bottomName = series.bottomTeam || "TBD";
+      const topWinClass    = series.winner && series.winner === series.topTeam    ? " series-winner" : "";
+      const bottomWinClass = series.winner && series.winner === series.bottomTeam ? " series-winner" : "";
 
       html += '<div class="result-row">';
       html += '  <span class="matchup-label">' + getMatchupLabel(series.matchup) + '</span>';
       html += '  <div class="result-matchup">';
       html += '    <span class="result-team' + topWinClass + '">';
-      html += '      <span class="seed">' + series.topSeedRank + '</span> ' + series.topTeam;
-      html += '      <span class="wins-count">' + series.topWins + '</span>';
+      html += '      <span class="seed">' + (series.topSeedRank || '') + '</span> ' + topName;
+      if (series.topTeam) html += '      <span class="wins-count">' + series.topWins + '</span>';
       html += '    </span>';
       html += '    <span class="result-team' + bottomWinClass + '">';
-      html += '      <span class="seed">' + series.bottomSeedRank + '</span> ' + series.bottomTeam;
-      html += '      <span class="wins-count">' + series.bottomWins + '</span>';
+      html += '      <span class="seed">' + (series.bottomSeedRank || '') + '</span> ' + bottomName;
+      if (series.bottomTeam) html += '      <span class="wins-count">' + series.bottomWins + '</span>';
       html += '    </span>';
       html += '  </div>';
       html += '</div>';
