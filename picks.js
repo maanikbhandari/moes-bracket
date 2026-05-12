@@ -137,14 +137,15 @@ function renderPicksView(bracketData, playerPicks, playerId) {
           else                         bottomClass += " incorrect";
         }
       }
+      if (isReadOnly) { topClass += ' no-interact'; bottomClass += ' no-interact'; }
       const topLogo    = getTeamLogo(series.topTeam)    ? '<img class="team-logo" src="' + getTeamLogo(series.topTeam)    + '" alt="">' : '';
       const bottomLogo = getTeamLogo(series.bottomTeam) ? '<img class="team-logo" src="' + getTeamLogo(series.bottomTeam) + '" alt="">' : '';
       html += '<div class="series-row">';
       html += '  <span class="matchup-label">' + series.label + '</span>';
       html += '  <div class="matchup-picks">';
-      html += '    <button class="' + topClass    + '" data-round0="1" data-series="' + series.id + '" data-team="' + series.topTeam    + '"' + (isReadOnly ? ' disabled' : '') + '>' + topLogo    + '<span class="team-name">' + series.topTeam    + '</span><span class="wins">' + series.topWins    + '</span></button>';
+      html += '    <button class="' + topClass    + '" data-round0="1" data-series="' + series.id + '" data-team="' + series.topTeam    + '">' + topLogo    + '<span class="team-name">' + series.topTeam    + '</span><span class="wins">' + series.topWins    + '</span></button>';
       html += '    <span class="vs">vs</span>';
-      html += '    <button class="' + bottomClass + '" data-round0="1" data-series="' + series.id + '" data-team="' + series.bottomTeam + '"' + (isReadOnly ? ' disabled' : '') + '>' + bottomLogo + '<span class="team-name">' + series.bottomTeam + '</span><span class="wins">' + series.bottomWins + '</span></button>';
+      html += '    <button class="' + bottomClass + '" data-round0="1" data-series="' + series.id + '" data-team="' + series.bottomTeam + '">' + bottomLogo + '<span class="team-name">' + series.bottomTeam + '</span><span class="wins">' + series.bottomWins + '</span></button>';
       html += '  </div>';
       html += '</div>';
     }
@@ -174,14 +175,15 @@ function renderPicksView(bracketData, playerPicks, playerId) {
           else                            topClass    += " incorrect";
         }
       }
+      if (isReadOnly) { topClass += ' no-interact'; bottomClass += ' no-interact'; }
       const topLogo    = getTeamLogo(series.topTeam)    ? '<img class="team-logo" src="' + getTeamLogo(series.topTeam)    + '" alt="">' : '';
       const bottomLogo = getTeamLogo(series.bottomTeam) ? '<img class="team-logo" src="' + getTeamLogo(series.bottomTeam) + '" alt="">' : '';
       html += '<div class="series-row">';
       html += '  <span class="matchup-label">' + series.label + '</span>';
       html += '  <div class="matchup-picks">';
-      html += '    <button class="' + topClass    + '" data-qual="1" data-series="' + series.id + '" data-team="' + series.topTeam    + '"' + (isReadOnly ? ' disabled' : '') + '>' + topLogo    + '<span class="team-name">' + series.topTeam    + '</span><span class="wins">' + series.topWins    + '</span></button>';
+      html += '    <button class="' + topClass    + '" data-qual="1" data-series="' + series.id + '" data-team="' + series.topTeam    + '">' + topLogo    + '<span class="team-name">' + series.topTeam    + '</span><span class="wins">' + series.topWins    + '</span></button>';
       html += '    <span class="vs">vs</span>';
-      html += '    <button class="' + bottomClass + '" data-qual="1" data-series="' + series.id + '" data-team="' + series.bottomTeam + '"' + (isReadOnly ? ' disabled' : '') + '>' + bottomLogo + '<span class="team-name">' + series.bottomTeam + '</span><span class="wins">' + series.bottomWins + '</span></button>';;
+      html += '    <button class="' + bottomClass + '" data-qual="1" data-series="' + series.id + '" data-team="' + series.bottomTeam + '">' + bottomLogo + '<span class="team-name">' + series.bottomTeam + '</span><span class="wins">' + series.bottomWins + '</span></button>';;
       html += '  </div>';
       html += '</div>';
     }
@@ -212,8 +214,9 @@ function renderPicksView(bracketData, playerPicks, playerId) {
           if (isSelected) cls += " selected";
           if (isCorrect)  cls += " correct";
           if (isWrong)    cls += " incorrect";
+          if (isReadOnly) cls += " no-interact";
           const logo = getTeamLogo(team) ? '<img class="team-logo" src="' + getTeamLogo(team) + '" alt="">' : '';
-          html += '<button class="' + cls + '" data-rr="1" data-conf="' + conf + '" data-pos="' + pos + '" data-team="' + team + '"' + (isReadOnly ? ' disabled' : '') + '>' + logo + '<span class="team-name">' + team.split(" ").pop() + '</span></button>';
+          html += '<button class="' + cls + '" data-rr="1" data-conf="' + conf + '" data-pos="' + pos + '" data-team="' + team + '">' + logo + '<span class="team-name">' + team.split(" ").pop() + '</span></button>';
         }
         html += '</div>';
         html += '<span class="rr-actual">Actual: ' + actual[pos].split(" ").pop() + '</span>';
