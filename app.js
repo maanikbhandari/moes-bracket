@@ -179,7 +179,7 @@ async function reinit() {
 function renderLambsLair() {
   const container = document.getElementById("lambslair-container");
   if (currentYear > 2019) {
-    container.innerHTML = '<div style="text-align:center; padding:4rem 1rem;"><h2 style="font-size:2rem; color:#8b949e;">lambs lair is kill<br>no</h2></div>';
+    container.innerHTML = '<div style="text-align:center; padding:4rem 1rem;"><h2 style="font-size:2rem; color:#8b949e;">lambs lair is kill<br>no?</h2></div>';
     return;
   }
   container.innerHTML =
